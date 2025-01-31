@@ -1,6 +1,7 @@
 /*
 System: FFG Star Wars for Foundry VTT
-Purpose: A macro to create custom skill lists from existing available skill lists within the system
+Purpose: A macro to create custom skill lists from existing available skill lists within the system.
+Author: Lyinggod
 */
 
 (async () => {
