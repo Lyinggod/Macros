@@ -7,4 +7,4 @@
 ### FFG Display Actor Talents
 Shows talents on the actor in a dialog that is searchable and sortable
 
-Players see registered character. GM's can see all characters
+Players see their registered character. GM's can see may select characters from a dropdown.
