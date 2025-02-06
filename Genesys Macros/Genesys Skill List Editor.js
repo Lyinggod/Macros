@@ -2,6 +2,9 @@
 System: FFG Star Wars for Foundry VTT
 Purpose: This macro is for aiding in creating custom skills from existing skill lists while minimizing the possibility of damaging the JSON structure of the skill list.
 Author: Lyinggod
+Version: 1.0.1
+History:
+1.0.1 - 2025-02-06 - skill lists did not appear on new world
 */
 
 (async () => {
@@ -130,9 +133,14 @@ Author: Lyinggod
     buttons: {},
     render: (html) => {
       // Retrieve skill lists from the "starwarsffg.arraySkillList" world setting.
-      const skillLists = [...game.settings.storage.get("world").entries()]
+      const allSkillLists = [...game.settings.storage.get("world").entries()]
         .find(([_, value]) => value.key.includes("starwarsffg.arraySkillList"))?.[1].value || [];
-
+      console.info("allSkillLists",allSkillLists)
+      const defaultSkillLists = [...game.settings.settings.entries()]
+  .find(([key, value]) => key === "starwarsffg.arraySkillList")?.[1].default;
+      const skillLists = allSkillLists.length == 0 ? defaultSkillLists : allSkillLists;
+console.info("defaultSkillLists",defaultSkillLists)
+      
       // Populate the dropdown on Tab 1
       html.find('#skill-list-dropdown').append(
         skillLists.map(list => `<option value="${list.id}">${list.id}</option>`).join('')
